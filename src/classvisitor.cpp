@@ -29,7 +29,10 @@
 
 
 #include <ponder/classvisitor.hpp>
-
+#include <ponder/simpleproperty.hpp>
+#include <ponder/arrayproperty.hpp>
+#include <ponder/enumproperty.hpp>
+#include <ponder/userproperty.hpp>
 
 namespace ponder
 {
@@ -44,24 +47,24 @@ void ClassVisitor::visit(const Property&)
     // The default implementation does nothing
 }
 
-void ClassVisitor::visit(const SimpleProperty&)
+void ClassVisitor::visit(const SimpleProperty& property)
 {
-    // The default implementation does nothing
+	visit(static_cast<const Property&>(property));
 }
 
-void ClassVisitor::visit(const ArrayProperty&)
+void ClassVisitor::visit(const ArrayProperty& property)
 {
-    // The default implementation does nothing
+	visit(static_cast<const Property&>(property));
 }
 
-void ClassVisitor::visit(const EnumProperty&)
+void ClassVisitor::visit(const EnumProperty& property)
 {
-    // The default implementation does nothing
+	visit(static_cast<const Property&>(property));
 }
 
-void ClassVisitor::visit(const UserProperty&)
+void ClassVisitor::visit(const UserProperty& property)
 {
-    // The default implementation does nothing
+	visit(static_cast<const Property&>(property));
 }
 
 void ClassVisitor::visit(const Function&)
