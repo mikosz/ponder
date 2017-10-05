@@ -205,6 +205,19 @@ public:
     }
 };
 
+template <typename FTraits, typename FPolicies>
+class CallHelper<const void, FTraits, FPolicies>
+{
+public:
+
+	template<typename F, typename... A, size_t... Is>
+	static Value call(F func, const Args& args, _PONDER_SEQNS::index_sequence<Is...>)
+	{
+		func(ConvertArgs<A>::convert(args,Is)...);
+		return Value::nothing;
+	}
+};
+
 //-----------------------------------------------------------------------------
 // Convert traits to callable function wrapper. Generic for all function types.
 
